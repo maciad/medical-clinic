@@ -11,6 +11,7 @@ This project is part of the recruitment process for Esatto Poland. The main goal
 ## Technologies
 - C#
 - .NET Core 8.0
+- Bootstrap
 - Entity Framework
 - Docker
 - PostgreSQL
@@ -23,7 +24,7 @@ With the database up and running, you can now run the project. To do so, you nee
 ```bash
 dotnet run
 ```
-This will start the application on the `http://localhost:5111`.
+This will start the application on the localhost.
 
 ## Screenshots
 Patient list:
