@@ -1,0 +1,61 @@
+@page
+@model MedicalClinic.Pages.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Dodaj Pacjenta</h1>
+
+<h4>Pacjent</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Patient.firstName" class="control-label"></label>
+                <input asp-for="Patient.firstName" class="form-control" />
+                <span asp-validation-for="Patient.firstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.lastName" class="control-label"></label>
+                <input asp-for="Patient.lastName" class="form-control" />
+                <span asp-validation-for="Patient.lastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.pesel" class="control-label"></label>
+                <input asp-for="Patient.pesel" class="form-control" />
+                <span asp-validation-for="Patient.pesel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.email" class="control-label"></label>
+                <input asp-for="Patient.email" class="form-control" />
+                <span asp-validation-for="Patient.email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.city" class="control-label"></label>
+                <input asp-for="Patient.city" class="form-control" />
+                <span asp-validation-for="Patient.city" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.street" class="control-label"></label>
+                <input asp-for="Patient.street" class="form-control" />
+                <span asp-validation-for="Patient.street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.zipCode" class="control-label"></label>
+                <input asp-for="Patient.zipCode" class="form-control" />
+                <span asp-validation-for="Patient.zipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Dodaj" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Powrót do listy</a>
+</div>
+

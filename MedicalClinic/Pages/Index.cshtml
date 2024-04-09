@@ -1,0 +1,104 @@
+@page
+@model MedicalClinic.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Pacjenci</h1>
+
+<p>
+    <a asp-page="Create">Utwórz pacjenta</a>
+    <form method="post" asp-page-handler="AddRandom">
+        <button type="submit">Dodaj losowego pacjenta</button>
+    </form>
+
+</p>
+<table class="table">
+<thead>
+    <tr>
+        <th>
+            <a asp-page="./Index" asp-route-sortOrder="@(Model.SortType == "Name" ? "name_desc" : "Name")">Imię</a>
+        </th>
+        <th>
+            <a asp-page="./Index" asp-route-sortOrder="@(Model.SortType == "LastName" ? "last_name_desc" : "LastName")">Nazwisko</a>
+        </th>
+        <th>
+            <a asp-page="./Index" asp-route-sortOrder="@(Model.SortType == "Pesel" ? "pesel_desc" : "Pesel")">PESEL</a>
+        </th>
+        <th>
+            <a asp-page="./Index" asp-route-sortOrder="@(Model.SortType == "Email" ? "email_desc" : "Email")">Email</a>
+        </th>
+        <th>
+            <a asp-page="./Index" asp-route-sortOrder="@(Model.SortType == "City" ? "city_desc" : "City")">Miasto</a>
+        </th>
+        <th>
+            <a asp-page="./Index" asp-route-sortOrder="@(Model.SortType == "Street" ? "street_desc" : "Street")">Ulica</a>
+        </th>
+        <th>
+            <a asp-page="./Index" asp-route-sortOrder="@(Model.SortType == "ZipCode" ? "zip_code_desc" : "ZipCode")">Kod pocztowy</a>
+        </th>
+        <th></th>
+    </tr>
+</thead>
+
+
+    <tbody>
+@foreach (var item in Model.Patient) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pesel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.zipCode)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edytuj</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Szczegóły</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@if (Model.Patient.HasPreviousPage || Model.Patient.HasNextPage)
+{
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            @if (Model.Patient.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-page="./Index" asp-route-sortOrder="@Model.SortType" asp-route-pageIndex="@(Model.Patient.PageIndex - 1)">Previous</a>
+                </li>
+            }
+            @for (int i = 1; i <= Model.Patient.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.Patient.PageIndex ? "active" : "")">
+                    <a class="page-link" asp-page="./Index" asp-route-sortOrder="@Model.SortType" asp-route-pageIndex="@i">@i</a>
+                </li>
+            }
+            @if (Model.Patient.HasNextPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-page="./Index" asp-route-sortOrder="@Model.SortType" asp-route-pageIndex="@(Model.Patient.PageIndex + 1)">Next</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
