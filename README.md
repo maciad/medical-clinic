@@ -27,6 +27,6 @@ This will start the application on the `http://localhost:5111`.
 
 ## Screenshots
 Patient list:
-![patient list](image-3.png)
+![patient list](assets/image-3.png)
 Add patient:
-![add patient](image-2.png)
+![add patient](assets/image-2.png)
